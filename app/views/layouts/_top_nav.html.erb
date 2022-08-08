@@ -68,11 +68,25 @@
           <%= link_to cart_path, class: "nav-link " do %> <%= fa_icon "shopping-cart" %>
           My Cart (<%= cart.size %>) <% end %>
         </li>
+        <li class="nav-item" id="signed-in">
+        <% if current_user %>
+          <p id="signed-in2">Signed in as <%= current_user.first_name %></p>
+          <li>
+            <li><%= link_to "Logout", '/logout', class: "nav-link text-nowrap" %></li>
+            <% else %>
+           <li>
+             <%= link_to 'Login', '/login', class: "nav-link" %>
+          </li>
+            <li><%= link_to 'Signup', '/signup', class: "nav-link" %></li>
+            <% end %>
+          </li>
       </ul>
     </div>
   </div>
 </nav>
 <script>
+
+
 (function(){
 const gnr = () => {
     const uptitle = document.querySelector("section.title h3");
